@@ -1,0 +1,241 @@
+version: 1
+info:
+  name: SGlab SCADA Simulator
+authentication:
+  username: user
+  password: pass
+communication:
+  port: 8765
+  messageLength: 4
+machines:
+  - id: 1
+    data:
+      name: Hydro Power Plant
+      description: Hydro Power Plant @ Smart Grid Lab
+      controllableUnit: true
+      powerFactor: 0.5
+    measurements:
+      activePower:
+        key: System.Measurements1:101
+        dataType: DOUBLE
+        bounds:
+          min: 0.8 #[kW]
+          max: 11.8 #[kW]
+        rampUp: 0.8 #[kW/s]
+        rampDown: 0.7 #[kW/s]
+      reactivePower:
+        key: System.Measurements1:102
+        dataType: DOUBLE
+      apparentPower:
+        key: System.Measurements1:103
+        dataType: DOUBLE
+    commands:
+      start:
+        key: System.Commands1:104
+        messageType: COMMAND
+        dataType: BOOLEAN
+      stop:
+        key: System.Commands1:105
+        messageType: COMMAND
+        dataType: BOOLEAN
+      pref:
+        key: System.Commands1:106
+        messageType: COMMAND
+        dataType: DOUBLE
+
+  - id: 2
+    data:
+      name: Solar Panels
+      description: Solar Panels @ Smart Grid Lab
+      controllableUnit: false
+      powerFactor: 0.95
+      averageHourlyProfiles: 0, 0, 0, 0, 0, 3, 9, 19, 29, 38, 43, 45, 44, 40, 34, 26, 17, 8, 3, 0, 0, 0, 0, 0 #[kWh]
+      averageDailyOutput: 0.259 #[MWh/day]
+      averageYearlyOutput: 94.676 #[MWh/year]
+    measurements:
+      activePower:
+        key: System.Measurements2:201
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 80
+        rampUp: 10 #[kW/s]
+        rampDown: 10 #[kW/s]
+      reactivePower:
+        key: System.Measurements2:202
+        dataType: DOUBLE
+      apparentPower:
+        key: System.Measurements2:203
+        dataType: DOUBLE
+      activePowerLimitation:
+        key: System.Measurements2:204
+        dataType: DOUBLE
+      totalEnergyFed:
+        key: System.Measurements2:205
+        dataType: DOUBLE
+      currentDayTotalEnergyFed:
+        key: System.Measurements2:206
+        dataType: DOUBLE
+
+  - id: 3
+    data:
+      name: Converter
+      description: Converter @ Smart Grid Lab
+      controllableUnit: true
+    measurements:
+      activePower:
+        key: System.Measurements3:301
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 20
+        rampUp: 10 #[kW/s]
+        rampDown: 10 #[kW/s]
+      voltage:
+        key: System.Measurements3:302
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 400
+      current:
+        key: System.Measurements3:303
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 63
+    commands:
+      uref:
+        key: System.Commands3:304
+        messageType: COMMAND
+        dataType: DOUBLE
+      pref:
+        key: System.Commands3:305
+        messageType: COMMAND
+        dataType: DOUBLE
+      activate:
+        key: System.Commands3:306
+        messageType: COMMAND
+        dataType: BOOLEAN
+      discharge:
+        key: System.Commands3:307
+        messageType: COMMAND
+        dataType: BOOLEAN
+
+  - id: 4
+    data:
+      name: DC1 load
+      description: DC1 load @ Smart Grid Lab
+      controllableUnit: true
+    measurements:
+      activePower:
+        key: System.Measurements4:401
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 2.4
+        rampUp: 1 #[kW/s]
+        rampDown: 1 #[kW/s]
+      voltage:
+        key: System.Measurements4:402
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 750
+      current:
+        key: System.Measurements4:403
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 40
+    commands:
+      iref:
+        key: System.Commands4:404
+        messageType: COMMAND
+        dataType: DOUBLE
+      pref:
+        key: System.Commands4:405
+        messageType: COMMAND
+        dataType: DOUBLE
+      activate:
+        key: System.Commands4:406
+        messageType: COMMAND
+        dataType: BOOLEAN
+
+  - id: 5
+    data:
+      name: DC2 load
+      description: DC2 load @ Smart Grid Lab
+      controllableUnit: true
+    measurements:
+      activePower:
+        key: System.Measurements5:501
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 2.4
+        rampUp: 1 #[kW/s]
+        rampDown: 1 #[kW/s]
+      voltage:
+        key: System.Measurements5:502
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 400
+      current:
+        key: System.Measurements5:503
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 50
+    commands:
+      iref:
+        key: System.Commands5:504
+        messageType: COMMAND
+        dataType: DOUBLE
+      pref:
+        key: System.Commands5:505
+        messageType: COMMAND
+        dataType: DOUBLE
+      activate:
+        key: System.Commands5:506
+        messageType: COMMAND
+        dataType: BOOLEAN
+
+  - id: 6
+    data:
+      name: Battery storage
+      description: Battery Storage @ Smart Grid Lab
+      controllableUnit: true
+      nominalCapacity: 6.5 #[kWh]
+      powerFactor: 0.95
+    measurements:
+      activePower:
+        key: System.Measurements6:601
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 2.5
+        rampUp: 2 #[kW/s]
+        rampDown: 2 #[kW/s]
+      apparentPower:
+        key: System.Measurements6:602
+        dataType: DOUBLE
+      stateOfCharge:
+        key: System.Measurements6:603
+        dataType: DOUBLE
+        bounds:
+          min: 0
+          max: 100
+    commands:
+      pref:
+        key: System.Commands6:604
+        messageType: COMMAND
+        dataType: DOUBLE
+      activate:
+        key: System.Commands6:605
+        messageType: COMMAND
+        dataType: BOOLEAN
+      discharge:
+        key: System.Commands6:606
+        messageType: COMMAND
+        dataType: BOOLEAN

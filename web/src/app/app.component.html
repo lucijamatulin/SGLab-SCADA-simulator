@@ -1,0 +1,66 @@
+<p>
+  <mat-toolbar style="background-color: aqua">
+    <span><mat-icon class="app-icon">device_hub</mat-icon>SGLab SCADA Simulator</span>
+    <span class="spacer"></span>
+    <span class="version">v1.0.0</span>
+  </mat-toolbar>
+</p>
+
+
+<mat-grid-list style="background-color: ghostwhite" *ngIf="configuration && connected" cols="3" rowHeight="3:2">
+  <mat-grid-tile *ngFor="let config of configuration.machines; index as i; first as isFirst">
+    <mat-card style="width: 90%; height: 85%; overflow-y: auto;">
+      <mat-card-header style="background-color: azure">
+        <mat-card-title>{{ config.data['name'] }}</mat-card-title>
+        <mat-card-subtitle>{{ config.data['description'] }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="mat-dialog-container configuration-table">
+          <tr>
+            <td> </td>
+            <td>Min [kW]</td>
+            <td>Max [kW]</td>
+            </tr>
+          <tr>
+            <td>Active Power:</td>
+            <td>{{ config.measurements['activePower']['bounds']['min'] }}</td>
+            <td>{{ config.measurements['activePower']['bounds']['max'] }}</td>
+            </tr>
+          <tr>
+            <td> </td>
+            <td>Ramp Up [kW/s]</td>
+            <td>Ramp Down [kW/s]</td>
+          </tr>
+          <tr>
+            <td>Active Power:</td>
+            <td>{{ config.measurements['activePower']['rampUp'] }}</td>
+            <td>{{ config.measurements['activePower']['rampDown'] }}</td>
+            </tr>
+          <tr *ngIf="config.measurements['voltage'] != null">
+            <td> </td>
+            <td>Min [V]</td>
+            <td>Max [V]</td>
+          </tr>
+          <tr *ngIf="config.measurements['voltage'] != null">
+            <td>Voltage:</td>
+            <td>{{ config.measurements['voltage']['bounds']['min'] }}</td>
+            <td>{{ config.measurements['voltage']['bounds']['max'] }}</td>
+            </tr>
+          <tr *ngIf="config.measurements['current'] != null">
+            <td> </td>
+            <td>Min [A]</td>
+            <td>Max [A]</td>
+          </tr>
+          <tr *ngIf="config.measurements['current'] != null">
+            <td>Current:</td>
+            <td>{{ config.measurements['current']['bounds']['min'] }}</td>
+            <td>{{ config.measurements['current']['bounds']['max'] }}</td>
+            </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+

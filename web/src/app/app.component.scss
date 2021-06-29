@@ -1,0 +1,68 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.app-icon {
+  vertical-align: sub;
+  margin-right: 5px;
+}
+
+.toolbar-input {
+  width: 200px;
+  font-size: 0.8rem;
+  margin-right: 10px;
+  padding-top: 18px;
+}
+
+.red-circle {
+  color: red;
+}
+
+.green-circle {
+  color: green;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.configuration-table {
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+}
+
+.commands-table {
+  th, td {
+    text-align: left;
+    padding-left: 8px;
+  }
+
+  .right {
+    text-align: right;
+  }
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.send-command-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #363636;
+}
+
+.version-paragraph {
+  margin-left: 20px;
+}
+
+.version {
+  font-size: 0.75rem;
+}
