@@ -1,6 +1,6 @@
 # SGlab SCADA Simulator
 
-[](https://github.com/lucijamatulin/SGLab-SCADA-simulator/blob/main/assets/demo_gif.gif)
+![](https://github.com/lucijamatulin/SGLab-SCADA-simulator/blob/main/assets/demo_gif.gif)
 
 ## General information
 
