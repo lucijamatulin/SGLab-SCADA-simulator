@@ -1,5 +1,7 @@
 # SGlab SCADA Simulator
 
+![](http://https://github.com/lucijamatulin/SGLab-SCADA-simulator/blob/main/assets/demo_gif.gif)
+
 ## General information
 
 Gradle distribution is shipped in this project.
